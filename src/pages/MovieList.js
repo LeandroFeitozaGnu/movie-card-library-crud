@@ -8,28 +8,32 @@ class MovieList extends Component {
     super();
     this.state = {
       movies: [],
-    }
+    };
   }
 
-    componentDidMount() {
+componentDidMount() {
       this.handleState()
-    }
+}
 
-    async handleState() {
-      const moviesFromApi = await getMovies();
-      this.setState({ movies: moviesFromApi })
-    }
+async handleState() {
+  const moviesFromApi = await getMovies();
+  this.setState({ movies: moviesFromApi })
+}
 
-  render() {
-    const { movies } = this.state;
+render() {
+ const { movies } = this.state;
+  
+ if (movies.length === 0) return <Loading />
 
-    if (movies.length === 0) return <Loading />
-
-    return (
-      <div data-testid="movie-list">
-        {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
-      </div>
-    );
+return (
+   <section>
+     <div>
+      {movies.map((movie) => (
+        <MovieCard key={movie.title} movie={movie}/>
+        ))}
+     </div>
+   </section>
+   );
   }
 }
 
