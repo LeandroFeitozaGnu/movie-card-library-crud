@@ -11,29 +11,29 @@ class MovieList extends Component {
     };
   }
 
-componentDidMount() {
-      this.handleState()
-}
+  componentDidMount() {
+    this.handleState()
+  }
 
-async handleState() {
-  const moviesFromApi = await getMovies();
-  this.setState({ movies: moviesFromApi })
-}
+  async handleState() {
+    const moviesFromApi = await getMovies();
+    this.setState({ movies: moviesFromApi })
+  }
 
-render() {
- const { movies } = this.state;
-  
- if (movies.length === 0) return <Loading />
+  render() {
+    const { movies } = this.state;
+    
+    if (movies.length === 0) return <Loading />
 
-return (
-   <section>
-     <div>
-      {movies.map((movie) => (
-        <MovieCard key={movie.title} movie={movie}/>
-        ))}
-     </div>
-   </section>
-   );
+    return (
+      <section>
+        <div>
+          {movies.map((movie) => (
+            <MovieCard key={movie.title} movie={movie}/>
+            ))}
+        </div>
+      </section>
+    );
   }
 }
 
