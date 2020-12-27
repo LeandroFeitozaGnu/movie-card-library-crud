@@ -13,21 +13,11 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/movies/:id/edit">
-          <EditMovie />
-        </Route>
-        <Route exact path="/movies/new">
-          <NewMovie />
-        </Route>
-        <Route exact path="movies/:id">
-          <MovieDetails />
-        </Route>
-        <Route exact path="/">
-          <MovieList />
-        </Route>
-        <Route exact path="*">
-          <NotFound />
-        </Route>
+        <Route exact path="/movies/:id/edit" component={EditMovie} />
+        <Route exact path="/movies/new" component={NewMovie} />
+        <Route exact path="/movies/:id" component={MovieDetails} />
+        <Route exact path="/" component={MovieList} />
+        <Route exact path="*" component={NotFound} />
       </Switch>
     </BrowserRouter>
   );
